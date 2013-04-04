@@ -1,0 +1,75 @@
+JagmortCurrencyNumericToWordsPlugin
+===================================
+
+Converting currency into words for billing in Russia.
+
+Class used only integer operations to avoid floating point misunderstanding,
+because it cannot represent an arbitrary decimal fractions exactly. Floating
+point shouldn't be used for anything that requires exactness.
+
+This is a library, not an apllication.
+
+Usage
+-----
+
+    echo JagmortCurrencyNumericToWords::createInstance()->convert('12345.67')
+
+    # will print
+    > двенадцать тысяч триста сорок пять рублей 67 копеек
+
+Installation
+------------
+
+Autoload or include file:
+
+    lib/JagmortCurrencyNumericToWords.class.php
+
+Installation with Symfony 1.4
+-----------------------------
+
+Activate the plugin in the `config/ProjectConfiguration.class.php`
+
+    [php]
+    class ProjectConfiguration extends sfProjectConfiguration
+    {
+      public function setup()
+      {
+        $this->enablePlugins(array(
+          ...
+          'JagmortCurrencyNumericToWordsPlugin'
+        ));
+      }
+    }
+
+
+Testing with Symfony 1.4
+------------------------
+
+    cd /path/to/your/project/plugins/JagmortCurrencyNumericToWordsPlugin
+    touch symfony
+    /path/to/symfony/data/bin/symfony test:unit -t JagmortCurrencyNumericToWordsPlugin
+
+or add to your `config/ProjectConfiguration.class.php`:
+
+    [php]
+    public function setupPlugins()
+    {
+      $this->pluginConfigurations['JagmortCurrencyNumericToWordsPlugin']->connectTests();
+    }
+
+and then run:
+
+    cd /path/to/your/project
+    symfony test:unit -t JagmortCurrencyNumericToWordsPlugin
+
+Links
+-----
+
+IEEE 754-2008
+
+    http://en.wikipedia.org/wiki/IEEE_floating_point
+    http://ieeexplore.ieee.org/xpl/mostRecentIssue.jsp?punumber=4610933
+
+Arbitrary-precision arithmetic
+
+    http://en.wikipedia.org/wiki/Arbitrary-precision_arithmetic
