@@ -11,7 +11,7 @@
  *   JagmortCurrencyNumericToWords::createInstance()->convert('12345.67') => двенадцать тысяч триста сорок пять рублей 67 копеек
  *
  * @author frost-nzcr4 <frost.nzcr4@jagmort.com>
- * @version 0.1
+ * @version 0.2
  */
 class JagmortCurrencyNumericToWords {
 	const GENDER_MALE   = 0;
@@ -239,6 +239,18 @@ class JagmortCurrencyNumericToWords {
 		if ($amount > 1 && $amount < 5) {
 			return $forms['some'];
 		}
+		if ($amount > 20) {
+			$mod = $amount % 10;
+			switch ($mod) {
+				case 1:
+					return $forms['one'];
+				case 2:
+				case 3:
+				case 4:
+					return $forms['some'];
+			}
+		}
+
 		return $forms['many'];
 	}
 }
