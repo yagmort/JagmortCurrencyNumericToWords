@@ -1,5 +1,7 @@
-JagmortCurrencyNumericToWordsPlugin
-===================================
+JagmortCurrencyNumericToWords
+=============================
+
+.. contents::
 
 Converting currency into words for billing in Russia.
 
@@ -11,6 +13,8 @@ This is a library, not an apllication.
 
 Usage
 -----
+
+.. code:: php
 
     echo JagmortCurrencyNumericToWords::createInstance()->convert('12345.67')
 
@@ -27,9 +31,11 @@ Autoload or include file:
 Installation with Symfony 1.4
 -----------------------------
 
+Rename JagmortCurrencyNumericToWords library folder to JagmortCurrencyNumericToWordsPlugin.
 Activate the plugin in the `config/ProjectConfiguration.class.php`
 
-    [php]
+.. code:: php
+
     class ProjectConfiguration extends sfProjectConfiguration
     {
       public function setup()
@@ -41,26 +47,30 @@ Activate the plugin in the `config/ProjectConfiguration.class.php`
       }
     }
 
-
 Testing with Symfony 1.4
 ------------------------
 
-    cd /path/to/your/project/plugins/JagmortCurrencyNumericToWordsPlugin
+.. code:: bash
+
+    cd /path/to/your/project/plugins/JagmortCurrencyNumericToWords
     touch symfony
-    /path/to/symfony/data/bin/symfony test:unit -t JagmortCurrencyNumericToWordsPlugin
+    /path/to/symfony/data/bin/symfony test:unit -t JagmortCurrencyNumericToWords
 
 or add to your `config/ProjectConfiguration.class.php`:
 
-    [php]
+.. code:: php
+
     public function setupPlugins()
     {
-      $this->pluginConfigurations['JagmortCurrencyNumericToWordsPlugin']->connectTests();
+      $this->pluginConfigurations['JagmortCurrencyNumericToWords']->connectTests();
     }
 
 and then run:
 
+.. code:: bash
+
     cd /path/to/your/project
-    symfony test:unit -t JagmortCurrencyNumericToWordsPlugin
+    symfony test:unit -t JagmortCurrencyNumericToWords
 
 Links
 -----
